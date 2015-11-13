@@ -8,6 +8,10 @@ public class Inhabitant {
 	protected City city;
 	protected double bankAccount;
 	
+	public Inhabitant(String name, City city) {
+		this(name, city, 5000);
+	}
+	
 	public Inhabitant(String name, City city, double bankAccount) {
 		this.name = name;
 		this.city = city;
