@@ -5,7 +5,7 @@ import java.util.List;
 public class City {
 
 	protected String name;
-	protected List<Letter> postBox;
+	protected List<Letter<?>> postBox;
 	
 	public void sendLetter(Letter<?> letter){
 		
