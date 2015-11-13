@@ -14,6 +14,5 @@ public abstract class SpecialLetter<L extends Letter<?>> extends Letter<L> {
 		content.doAction();
 	}
 	
-	
 
 }

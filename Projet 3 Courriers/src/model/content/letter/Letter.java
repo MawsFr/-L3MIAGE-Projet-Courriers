@@ -20,11 +20,6 @@ public abstract class Letter<C extends Content> extends ExtendedObservable imple
 	public abstract void doAction();
 	public abstract double getCost();
 
-	@Override
-	public String toString() {
-		return content.toString();
-	}
-	
 	public Inhabitant getSender() {
 		return sender;
 	}
@@ -42,4 +37,8 @@ public abstract class Letter<C extends Content> extends ExtendedObservable imple
 		notifyObservers(message);
 	}
 
+	@Override
+	public String toString() {
+		return "letter" + " whose content is " + content;
+	}
 }

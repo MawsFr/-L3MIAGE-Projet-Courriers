@@ -1,6 +1,6 @@
 package view;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -27,6 +27,7 @@ public class Simulation extends ExtendedObservable {
 		this.consoleView = consoleView;
 		this.nbDays = nbDays;
 		r = new Random();
+		tempInhabitants = new ArrayList<Inhabitant>();
 		
 		createCity("BoobsVille", 100);
 
@@ -35,23 +36,34 @@ public class Simulation extends ExtendedObservable {
 	}
 	
 	protected void createCity(String name, int nbInhabitants) {
-		this.city = new City(name, nbInhabitants);
 		this.addObserver(consoleView);
+		
+		notify("Creating " + city + " city");
+		notify("Creating " + nbInhabitants + " inhabitants");
+		
+		this.city = new City(name, nbInhabitants);
 		city.addObserver(consoleView);
+		for(Inhabitant inhabitant : city.getInhabitants()) {
+			inhabitant.addObserver(consoleView);
+		}
 	}
 
 	public void run() {
-		
 		Inhabitant sender, receiver;
 		int randNbInhabitant = 0;
 		
 		do {
-			randNbInhabitant = r.nextInt();
+			randNbInhabitant = r.nextInt(city.getNbInhabitants()) / 2;
 		} while(randNbInhabitant == 0);
 		
-		for(int i = 0; i < 6; i++) {
+		notify("Mailing letters for " + nbDays + " days");
+		
+		for(int i = 1; i <= nbDays; i++) {
 			resetTempList();
-			if(i % 2 == 0) {
+			notify("**************************************************");
+			notify("Day " + i);
+			if((i - 1) % 2 == 0) {
+				
 				for(int j = 0; j < randNbInhabitant; j++) {
 					sender = getRandomInhabitant();
 					receiver = getRandomInhabitant();
@@ -60,16 +72,20 @@ public class Simulation extends ExtendedObservable {
 			} else {
 				city.distibuteLetters();
 			}
+			
 		}
 		
 	}
 	
 	private void resetTempList() {
 		this.tempInhabitants.clear();
-		Collections.copy(tempInhabitants, city.getInhabitants());
+		for(Inhabitant inhabitant : city.getInhabitants()) {
+			tempInhabitants.add(inhabitant);
+		}
 	}
 
 	protected Letter<?> getRandomLetter(Inhabitant sender, Inhabitant receiver) {
+		//TODO : Check if inhabitant has enough money to do a promissory note
 		Letter<?> letter = null;
 		int randLetterType = r.nextInt(3); //0 = Simple Letter | 1 = PromissoryNote | 2 = Registered Letter
 		switch(randLetterType) {
@@ -124,7 +140,6 @@ public class Simulation extends ExtendedObservable {
 	
 	protected Inhabitant getRandomInhabitant() {
 		return tempInhabitants.remove(r.nextInt(tempInhabitants.size()));
-		
 	}
 
 }

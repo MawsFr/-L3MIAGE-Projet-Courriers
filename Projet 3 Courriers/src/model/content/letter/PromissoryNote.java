@@ -2,6 +2,7 @@ package model.content.letter;
 
 import model.Inhabitant;
 import model.content.Money;
+import model.content.Text;
 
 public class PromissoryNote extends Letter<Money> {
 	
@@ -13,12 +14,19 @@ public class PromissoryNote extends Letter<Money> {
 	public void doAction() {
 		this.sender.debit(this.content.getAmount());
 		this.receiver.credit(this.content.getAmount());
-		this.receiver.sendLetter(new SimpleLetter(receiver, sender, "Thanks"));
+		
+		Letter<Text> thanksLetter = new ThanksLetter(receiver, sender, "thanks for " + this);
+		this.receiver.sendLetter(thanksLetter);
 	}
 	
 	@Override
 	public double getCost() {
 		return 1 + (0.01 * content.getAmount());
+	}
+	
+	@Override
+	public String toString() {
+		return "a promissory note " + super.toString();
 	}
 	
 }

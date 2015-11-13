@@ -18,4 +18,9 @@ public class SimpleLetter extends Letter<Text> {
 	public double getCost() {
 		return 1;
 	}
+	
+	@Override
+	public String toString() {
+		return "a simple "  + super.toString();
+	}
 }

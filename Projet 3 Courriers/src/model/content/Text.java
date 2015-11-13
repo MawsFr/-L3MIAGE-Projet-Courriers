@@ -10,7 +10,7 @@ public class Text implements Content {
 	
 	@Override
 	public String toString() {
-		return this.content;
+		return "a text content (" + this.content + ")";
 	}
 
 }

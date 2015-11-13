@@ -1,8 +1,8 @@
 package model.content.specialletter;
 
 import model.Inhabitant;
+import model.content.letter.AknowledgmentOfReceiptLetter;
 import model.content.letter.Letter;
-import model.content.letter.SimpleLetter;
 
 public class RegisteredLetter<L extends Letter<?>> extends SpecialLetter<L>{
 
@@ -14,11 +14,16 @@ public class RegisteredLetter<L extends Letter<?>> extends SpecialLetter<L>{
 	public void doAction(){
 		super.doAction();
 		//TODO : Renvoi d'un accusé de reception
-		receiver.sendLetter(new SimpleLetter(receiver, sender, "Acknowledgment of receipt"));
+		receiver.sendLetter(new AknowledgmentOfReceiptLetter(receiver, sender, "aknowledgment of receipt for " + this));
 		
 	}
 	
 	public double getCost() {
 		return content.getCost() + 15;
+	}
+	
+	@Override
+	public String toString() {
+		return "a registered " + super.toString();
 	}
 }

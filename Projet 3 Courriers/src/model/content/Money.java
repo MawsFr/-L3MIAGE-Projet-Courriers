@@ -14,6 +14,6 @@ public class Money implements Content{
 	
 	@Override
 	public String toString() {
-		return "" + amount;
+		return "a money content (" + amount + ")";
 	}
 }

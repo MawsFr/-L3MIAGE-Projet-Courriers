@@ -2,7 +2,7 @@ package model;
 
 import model.content.letter.Letter;
 
-public class Inhabitant {
+public class Inhabitant extends ExtendedObservable {
 
 	protected String name;
 	protected City city;
@@ -20,14 +20,17 @@ public class Inhabitant {
 	
 	public void credit(double amount){
 		bankAccount += amount;
+		notify("\t+ " + this + " account is credited with " + amount + " euros; its balance is now " + bankAccount + " euros");
 	}
 	
 	public void debit(double amount){
 		bankAccount -= amount;
+		notify("\t- " + amount + ((amount > 1)?" euros " : " euro") + "is debited from " + this + " account whose balance is now " + bankAccount + " euros");
 	}
 	
 	public void sendLetter(Letter<?> letter) {
 		city.sendLetter(letter);
+		debit(letter.getCost());
 	}
 	
 	public void receiveLetter(Letter<?> letter) {
@@ -44,6 +47,11 @@ public class Inhabitant {
 	
 	public City getCity() {
 		return city;
+	}
+	
+	@Override
+	public String toString() {
+		return name;
 	}
 	
 }
