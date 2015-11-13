@@ -8,13 +8,10 @@ public class SimpleLetter extends Letter<Text> {
 	public SimpleLetter(Inhabitant sender, Inhabitant receiver, String content) {
 		super(sender, receiver, new Text(content), 1);
 	}
-	
+
 	@Override
 	public void doAction() {
-		super.doAction();
-		
+		// TODO Auto-generated method stub
 	}
-	
-	
 	
 }

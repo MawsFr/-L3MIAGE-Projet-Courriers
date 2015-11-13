@@ -18,9 +18,7 @@ public abstract class Letter<C extends Content> implements Content {
 		this.cost = cost;
 	}
 
-	public void doAction() {
-		
-	}
+	public abstract void doAction();
 	
 	public double getCost() {
 		return cost;
