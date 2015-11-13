@@ -9,9 +9,8 @@ public class City {
 	protected String name;
 	protected List<Letter<?>> postBox;
 	
-	public City(String name, List<Letter<?>> postBox) {
+	public City(String name) {
 		this.name = name;
-		this.postBox = postBox;
 	}
 
 	public void sendLetter(Letter<?> letter){

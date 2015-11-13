@@ -1,9 +1,11 @@
 package model.content.letter;
 
+import java.util.Observable;
+
 import model.Inhabitant;
 import model.content.Content;
 
-public abstract class Letter<C extends Content> implements Content {
+public abstract class Letter<C extends Content> extends Observable implements Content {
 	
 	protected Inhabitant sender;
 	protected Inhabitant receiver;
@@ -17,7 +19,6 @@ public abstract class Letter<C extends Content> implements Content {
 	}
 
 	public abstract void doAction();
-	
 	public abstract double getCost();
 
 	@Override
@@ -37,5 +38,9 @@ public abstract class Letter<C extends Content> implements Content {
 		return content;
 	}
 		
+	public void notify(String message) {
+		setChanged();
+		notifyObservers(message);
+	}
 
 }
