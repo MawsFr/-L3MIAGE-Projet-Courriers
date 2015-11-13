@@ -2,11 +2,10 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 import model.content.letter.Letter;
 
-public class City extends Observable {
+public class City extends ExtendedObservable {
 
 	protected String name;
 	protected List<Inhabitant> inhabitants;

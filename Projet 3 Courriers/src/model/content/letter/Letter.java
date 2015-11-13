@@ -1,11 +1,10 @@
 package model.content.letter;
 
-import java.util.Observable;
-
+import model.ExtendedObservable;
 import model.Inhabitant;
 import model.content.Content;
 
-public abstract class Letter<C extends Content> extends Observable implements Content {
+public abstract class Letter<C extends Content> extends ExtendedObservable implements Content {
 	
 	protected Inhabitant sender;
 	protected Inhabitant receiver;

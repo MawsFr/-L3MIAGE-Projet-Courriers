@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import model.City;
+import model.ExtendedObservable;
 import model.Inhabitant;
 import model.content.letter.Letter;
 import model.content.letter.PromissoryNote;
@@ -12,7 +13,7 @@ import model.content.letter.SimpleLetter;
 import model.content.specialletter.RegisteredLetter;
 import model.content.specialletter.UrgentLetter;
 
-public class Simulation {
+public class Simulation extends ExtendedObservable {
 
 	protected int nbDays;
 	protected ConsoleView consoleView;
@@ -31,6 +32,12 @@ public class Simulation {
 
 	
 		
+	}
+	
+	protected void createCity(String name, int nbInhabitants) {
+		this.city = new City(name, nbInhabitants);
+		this.addObserver(consoleView);
+		city.addObserver(consoleView);
 	}
 
 	public void run() {
@@ -62,11 +69,6 @@ public class Simulation {
 		Collections.copy(tempInhabitants, city.getInhabitants());
 	}
 
-	protected void createCity(String name, int nbInhabitants) {
-		this.city = new City(name, nbInhabitants);
-		city.addObserver(consoleView);
-	}
-	
 	protected Letter<?> getRandomLetter(Inhabitant sender, Inhabitant receiver) {
 		Letter<?> letter = null;
 		int randLetterType = r.nextInt(3); //0 = Simple Letter | 1 = PromissoryNote | 2 = Registered Letter
