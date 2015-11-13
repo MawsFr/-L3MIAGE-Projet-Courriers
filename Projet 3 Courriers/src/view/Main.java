@@ -1,15 +1,14 @@
 package view;
 
-import model.City;
 
 public class Main {
-	
+
 	public static void main(String[] args) {
 		ConsoleView consoleView = new ConsoleView();
-		City city = new City("BoobsVille", 100);
+		Simulation simulation = new Simulation(consoleView, 6);
+		simulation.run();
 		
-		city.addObserver(consoleView);
-		
-	}
 
+	}
+	
 }

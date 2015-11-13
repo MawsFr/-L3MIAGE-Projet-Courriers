@@ -9,7 +9,7 @@ public class Inhabitant {
 	protected double bankAccount;
 	
 	public Inhabitant(String name, City city) {
-		this(name, city, 5000);
+		this(name, city, 5000d);
 	}
 	
 	public Inhabitant(String name, City city, double bankAccount) {

@@ -35,4 +35,12 @@ public class City extends Observable {
 	public String getName() {
 		return name;
 	}
+	
+	public int getNbInhabitants() {
+		return this.inhabitants.size();
+	}
+	
+	public List<Inhabitant> getInhabitants() {
+		return inhabitants;
+	}
 }
