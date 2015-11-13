@@ -12,4 +12,8 @@ public class Money implements Content{
 	public String getContent() {
 		return "" + this.amount;
 	}
+	
+	public double getAmount() {
+		return amount;
+	}
 }

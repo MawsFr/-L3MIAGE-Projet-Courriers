@@ -30,6 +30,14 @@ public abstract class Letter<C extends Content> implements Content {
 	public String getContent() {
 		return content.getContent();
 	}
+	
+	public Inhabitant getSender() {
+		return sender;
+	}
+	
+	public Inhabitant getReceiver() {
+		return receiver;
+	}
 		
 
 }

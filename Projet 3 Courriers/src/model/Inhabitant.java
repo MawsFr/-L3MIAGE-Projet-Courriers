@@ -16,11 +16,11 @@ public class Inhabitant {
 		bankAccount -= money;
 	}
 	
-	public void sentdLetter(Letter<?> letter){
+	public void sentdLetter(Letter<?> letter) {
 		
 	}
 	
-	public void receiveLetter(Letter<?> letter){
-		
+	public void receiveLetter(Letter<?> letter) {
+		letter.doAction();
 	}
 }

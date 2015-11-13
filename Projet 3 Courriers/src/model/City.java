@@ -13,7 +13,11 @@ public class City {
 		this.postBox.add(letter);
 	}
 	
-	public void distibuteLetters(){
+	public void distibuteLetters() { 
+		for(Letter<?> letter : postBox) {
+			letter.getReceiver().receiveLetter(letter);
+			
+		}
 		
 	}
 }
