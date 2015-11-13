@@ -7,11 +7,11 @@ public abstract class Letter<C extends Content> implements Content {
 	
 	protected Inhabitant sender;
 	protected Inhabitant receiver;
-	protected Content content;
+	protected C content;
 	protected double cost;
 	
 	
-	public Letter(Inhabitant sender, Inhabitant receiver, Content content, double cost) {
+	public Letter(Inhabitant sender, Inhabitant receiver, C content, double cost) {
 		this.sender = sender;
 		this.receiver = receiver;
 		this.content = content;

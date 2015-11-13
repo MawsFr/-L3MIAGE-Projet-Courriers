@@ -11,8 +11,8 @@ public class PromissoryNote extends Letter<Money> {
 	
 	@Override
 	public void doAction() {
-		this.sender.debit(((Money) this.content).getAmount());
-		this.receiver.credit(((Money) this.content).getAmount());
+		this.sender.debit(this.content.getAmount());
+		this.receiver.credit(this.content.getAmount());
 		this.receiver.sentdLetter(new SimpleLetter(receiver, sender, "Merci"));
 	}
 	
