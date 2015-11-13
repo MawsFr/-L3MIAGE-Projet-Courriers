@@ -10,7 +10,7 @@ public class City {
 	protected List<Letter<?>> postBox;
 	
 	public void sendLetter(Letter<?> letter){
-		
+		this.postBox.add(letter);
 	}
 	
 	public void distibuteLetters(){

@@ -9,11 +9,11 @@ public class Inhabitant {
 	protected int bankAccount;
 	
 	public void credit(int money){
-		
+		bankAccount += money;
 	}
 	
 	public void debit(int money){
-		
+		bankAccount -= money;
 	}
 	
 	public void sentdLetter(Letter<?> letter){
