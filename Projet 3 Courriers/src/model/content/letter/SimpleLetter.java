@@ -1,6 +1,6 @@
 package model.content.letter;
 
-import model.Inhabitant;
+import model.city.Inhabitant;
 import model.content.Text;
 
 public class SimpleLetter extends Letter<Text> {

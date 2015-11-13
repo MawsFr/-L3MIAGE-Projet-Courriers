@@ -1,7 +1,10 @@
 package model.content.letter;
 
-import model.Inhabitant;
+import model.city.Inhabitant;
 
+/**
+ * This class represents an Aknowledgement of receipt
+ */
 public class AknowledgmentOfReceiptLetter extends SimpleLetter {
 
 	public AknowledgmentOfReceiptLetter(Inhabitant sender, Inhabitant receiver, String content) {

@@ -1,6 +1,7 @@
-package model;
+package model.city;
 
 import model.content.letter.Letter;
+import model.observable.ExtendedObservable;
 
 public class Inhabitant extends ExtendedObservable {
 

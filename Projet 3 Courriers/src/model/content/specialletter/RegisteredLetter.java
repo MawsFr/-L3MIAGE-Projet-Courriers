@@ -1,6 +1,6 @@
 package model.content.specialletter;
 
-import model.Inhabitant;
+import model.city.Inhabitant;
 import model.content.letter.AknowledgmentOfReceiptLetter;
 import model.content.letter.Letter;
 

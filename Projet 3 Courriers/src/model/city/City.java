@@ -1,9 +1,10 @@
-package model;
+package model.city;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import model.content.letter.Letter;
+import model.observable.ExtendedObservable;
 
 public class City extends ExtendedObservable {
 

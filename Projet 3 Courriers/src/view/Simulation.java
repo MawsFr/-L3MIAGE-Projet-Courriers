@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import model.City;
-import model.ExtendedObservable;
-import model.Inhabitant;
+import model.city.City;
+import model.city.Inhabitant;
 import model.content.letter.Letter;
 import model.content.letter.PromissoryNote;
 import model.content.letter.SimpleLetter;
 import model.content.specialletter.RegisteredLetter;
 import model.content.specialletter.UrgentLetter;
+import model.observable.ExtendedObservable;
 
 public class Simulation extends ExtendedObservable {
 

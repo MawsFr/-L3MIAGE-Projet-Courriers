@@ -1,9 +1,13 @@
 package model.content.letter;
 
-import model.ExtendedObservable;
-import model.Inhabitant;
+import model.city.Inhabitant;
 import model.content.Content;
+import model.observable.ExtendedObservable;
 
+/**
+ * This class represents a Letter
+ * @param <C>
+ */
 public abstract class Letter<C extends Content> extends ExtendedObservable implements Content {
 	
 	protected Inhabitant sender;

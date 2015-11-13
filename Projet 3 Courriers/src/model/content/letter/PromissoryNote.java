@@ -1,6 +1,6 @@
 package model.content.letter;
 
-import model.Inhabitant;
+import model.city.Inhabitant;
 import model.content.Money;
 import model.content.Text;
 
