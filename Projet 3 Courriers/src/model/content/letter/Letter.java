@@ -21,8 +21,8 @@ public abstract class Letter<C extends Content> implements Content {
 	public abstract double getCost();
 
 	@Override
-	public String getContent() {
-		return content.getContent();
+	public String toString() {
+		return content.toString();
 	}
 	
 	public Inhabitant getSender() {
@@ -31,6 +31,10 @@ public abstract class Letter<C extends Content> implements Content {
 	
 	public Inhabitant getReceiver() {
 		return receiver;
+	}
+	
+	public C getContent() {
+		return content;
 	}
 		
 

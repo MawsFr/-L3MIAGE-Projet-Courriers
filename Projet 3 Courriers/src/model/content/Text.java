@@ -9,7 +9,7 @@ public class Text implements Content {
 	}
 	
 	@Override
-	public String getContent() {
+	public String toString() {
 		return this.content;
 	}
 

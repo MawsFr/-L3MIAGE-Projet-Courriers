@@ -8,12 +8,12 @@ public class Money implements Content{
 		this.amount = amount;
 	}
 	
-	@Override
-	public String getContent() {
-		return "" + this.amount;
-	}
-	
 	public double getAmount() {
 		return amount;
+	}
+	
+	@Override
+	public String toString() {
+		return "" + amount;
 	}
 }

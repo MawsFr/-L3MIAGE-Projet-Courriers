@@ -9,6 +9,11 @@ public class City {
 	protected String name;
 	protected List<Letter<?>> postBox;
 	
+	public City(String name, List<Letter<?>> postBox) {
+		this.name = name;
+		this.postBox = postBox;
+	}
+
 	public void sendLetter(Letter<?> letter){
 		this.postBox.add(letter);
 	}
@@ -19,5 +24,9 @@ public class City {
 			
 		}
 		
+	}
+	
+	public String getName() {
+		return name;
 	}
 }
