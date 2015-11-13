@@ -5,7 +5,7 @@ import model.content.letter.Letter;
 
 public class RegisteredLetter<L extends Letter<?>> extends SpecialLetter<L>{
 
-	public RegisteredLetter(Inhabitant sender, Inhabitant receiver, L content, int cost) {
+	public RegisteredLetter(Inhabitant sender, Inhabitant receiver, L content, double cost) {
 		super(sender, receiver, content, cost);
 	}
 
@@ -15,7 +15,7 @@ public class RegisteredLetter<L extends Letter<?>> extends SpecialLetter<L>{
 	}
 	
 	@Override
-	public int getCost(){
+	public double getCost(){
 		return cost;
 	}
 }

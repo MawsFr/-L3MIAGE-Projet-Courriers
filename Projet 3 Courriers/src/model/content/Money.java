@@ -2,9 +2,9 @@ package model.content;
 
 public class Money implements Content{
 
-	protected int amount;
+	protected double amount;
 	
-	public Money(int amount){
+	public Money(double amount){
 		this.amount = amount;
 	}
 	

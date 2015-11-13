@@ -6,13 +6,13 @@ public class Inhabitant {
 
 	protected String name;
 	protected City city;
-	protected int bankAccount;
+	protected double bankAccount;
 	
-	public void credit(int money){
+	public void credit(double money){
 		bankAccount += money;
 	}
 	
-	public void debit(int money){
+	public void debit(double money){
 		bankAccount -= money;
 	}
 	

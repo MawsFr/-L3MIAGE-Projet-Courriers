@@ -8,10 +8,10 @@ public abstract class Letter<C extends Content> implements Content {
 	protected Inhabitant sender;
 	protected Inhabitant receiver;
 	protected Content content;
-	protected int cost;
+	protected double cost;
 	
 	
-	public Letter(Inhabitant sender, Inhabitant receiver, Content content, int cost) {
+	public Letter(Inhabitant sender, Inhabitant receiver, Content content, double cost) {
 		this.sender = sender;
 		this.receiver = receiver;
 		this.content = content;
@@ -22,7 +22,7 @@ public abstract class Letter<C extends Content> implements Content {
 		
 	}
 	
-	public int getCost() {
+	public double getCost() {
 		return cost;
 	}
 
