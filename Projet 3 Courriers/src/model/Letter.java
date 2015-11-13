@@ -1,6 +1,6 @@
 package model;
 
-public class Letter<C extends Content> implements Content {
+public abstract class Letter<C extends Content> implements Content {
 	
 	protected Inhabitant sender;
 	protected Inhabitant receiver;
