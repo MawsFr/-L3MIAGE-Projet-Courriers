@@ -8,12 +8,12 @@ public class Inhabitant {
 	protected City city;
 	protected double bankAccount;
 	
-	public void credit(double money){
-		bankAccount += money;
+	public void credit(double amount){
+		bankAccount += amount;
 	}
 	
-	public void debit(double money){
-		bankAccount -= money;
+	public void debit(double amount){
+		bankAccount -= amount;
 	}
 	
 	public void sentdLetter(Letter<?> letter) {

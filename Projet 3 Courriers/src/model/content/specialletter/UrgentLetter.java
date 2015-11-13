@@ -5,18 +5,18 @@ import model.content.letter.Letter;
 
 public class UrgentLetter<L extends Letter<?>> extends SpecialLetter<L>{
 
-	public UrgentLetter(Inhabitant sender, Inhabitant receiver, L content, double cost) {
-		super(sender, receiver, content, cost);
+	public UrgentLetter(Inhabitant sender, Inhabitant receiver, L content) {
+		super(sender, receiver, content);
 	}
 	
 	@Override
 	public void doAction() {
-		
+		super.doAction();
 	}
 	
 	@Override
 	public double getCost() {
-		return super.getCost()*2;
+		return content.getCost() * 2;
 	}
 
 }

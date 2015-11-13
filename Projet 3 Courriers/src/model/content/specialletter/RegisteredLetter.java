@@ -5,16 +5,18 @@ import model.content.letter.Letter;
 
 public class RegisteredLetter<L extends Letter<?>> extends SpecialLetter<L>{
 
-	public RegisteredLetter(Inhabitant sender, Inhabitant receiver, L content, double cost) {
-		super(sender, receiver, content, cost);
+	public RegisteredLetter(Inhabitant sender, Inhabitant receiver, L content) {
+		super(sender, receiver, content);
 	}
 
 	@Override
 	public void doAction(){
+		super.doAction();
+		//TODO : Renvoi d'un accusé de reception
 		
 	}
 	
 	public double getCost() {
-		return super.getCost()+15;
+		return content.getCost() + 15;
 	}
 }

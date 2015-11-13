@@ -5,8 +5,8 @@ import model.content.Money;
 
 public class PromissoryNote extends Letter<Money> {
 	
-	public PromissoryNote(Inhabitant sender, Inhabitant receiver, double cost, int amount) {
-		super(sender, receiver, new Money(amount), cost);
+	public PromissoryNote(Inhabitant sender, Inhabitant receiver, int amount) {
+		super(sender, receiver, new Money(amount));
 	}
 	
 	@Override
@@ -18,7 +18,7 @@ public class PromissoryNote extends Letter<Money> {
 	
 	@Override
 	public double getCost() {
-		return super.getCost()+(0.01*super.getCost());
+		return 1 + (0.01 * content.getAmount());
 	}
-
+	
 }

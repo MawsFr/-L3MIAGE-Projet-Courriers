@@ -8,21 +8,17 @@ public abstract class Letter<C extends Content> implements Content {
 	protected Inhabitant sender;
 	protected Inhabitant receiver;
 	protected C content;
-	protected double cost;
 	
 	
-	public Letter(Inhabitant sender, Inhabitant receiver, C content, double cost) {
+	public Letter(Inhabitant sender, Inhabitant receiver, C content) {
 		this.sender = sender;
 		this.receiver = receiver;
 		this.content = content;
-		this.cost = cost;
 	}
 
 	public abstract void doAction();
 	
-	public double getCost() {
-		return cost;
-	}
+	public abstract double getCost();
 
 	@Override
 	public String getContent() {
