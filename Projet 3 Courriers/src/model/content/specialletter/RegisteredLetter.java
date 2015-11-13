@@ -14,8 +14,7 @@ public class RegisteredLetter<L extends Letter<?>> extends SpecialLetter<L>{
 		
 	}
 	
-	@Override
-	public double getCost(){
-		return cost;
+	public double getCost() {
+		return super.getCost()+15;
 	}
 }

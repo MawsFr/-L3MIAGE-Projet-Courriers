@@ -16,7 +16,7 @@ public class UrgentLetter<L extends Letter<?>> extends SpecialLetter<L>{
 	
 	@Override
 	public double getCost() {
-		return super.getCost();
+		return super.getCost()*2;
 	}
 
 }
