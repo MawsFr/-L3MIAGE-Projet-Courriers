@@ -22,6 +22,11 @@ public class Letter<C extends Content> implements Content {
 	public double getCost() {
 		return cost;
 	}
+
+	@Override
+	public String getContent() {
+		return content.getContent();
+	}
 		
 
 }
