@@ -1,4 +1,7 @@
-package model;
+package model.content.specialletter;
+
+import model.Inhabitant;
+import model.content.letter.Letter;
 
 public abstract class SpecialLetter<L extends Letter<?>> extends Letter<L> {
 

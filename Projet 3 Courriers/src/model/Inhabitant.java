@@ -1,5 +1,7 @@
 package model;
 
+import model.content.letter.Letter;
+
 public class Inhabitant {
 
 	protected String name;

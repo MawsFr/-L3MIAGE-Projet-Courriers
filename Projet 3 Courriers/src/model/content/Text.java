@@ -1,4 +1,4 @@
-package model;
+package model.content;
 
 public class Text implements Content {
 	

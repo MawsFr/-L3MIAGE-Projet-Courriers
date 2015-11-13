@@ -1,4 +1,7 @@
-package model;
+package model.content.letter;
+
+import model.Inhabitant;
+import model.content.Content;
 
 public abstract class Letter<C extends Content> implements Content {
 	

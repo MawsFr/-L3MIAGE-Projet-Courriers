@@ -1,4 +1,7 @@
-package model;
+package model.content.letter;
+
+import model.Inhabitant;
+import model.content.Money;
 
 public class PromissoryNote extends Letter<Money> {
 	
