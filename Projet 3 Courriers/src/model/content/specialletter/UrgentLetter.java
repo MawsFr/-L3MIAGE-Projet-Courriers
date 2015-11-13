@@ -11,7 +11,7 @@ public class UrgentLetter<L extends Letter<?>> extends SpecialLetter<L>{
 	
 	@Override
 	public void doAction() {
-		super.doAction();
+		
 	}
 	
 	@Override
