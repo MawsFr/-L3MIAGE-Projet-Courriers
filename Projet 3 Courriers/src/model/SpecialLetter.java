@@ -6,14 +6,6 @@ public abstract class SpecialLetter<L extends Letter<?>> extends Letter<L> {
 		super(sender, receiver, content, cost);
 	}
 	
-	@Override
-	public void doAction(){
-		
-	}
 	
-	@Override
-	public double getCost(){
-		return cost;
-	}
-	
+
 }
