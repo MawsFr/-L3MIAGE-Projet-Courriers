@@ -12,6 +12,10 @@ public class City extends ExtendedObservable {
 	protected List<Inhabitant> inhabitants;
 	protected List<Letter<?>> postBox;
 	
+	public City(String name) {
+		this(name, 0);
+	}
+	
 	public City(String name, int nbInabitants) {
 		this.name = name;
 		this.inhabitants = new ArrayList<Inhabitant>();
@@ -43,6 +47,14 @@ public class City extends ExtendedObservable {
 			notify("<- " + letter.getReceiver() + " receives " + letter +" from " + letter.getSender());
 			letter.getReceiver().receiveLetter(letter);
 		}
+	}
+	
+	public void addInhabitant(Inhabitant inhabitant) {
+		this.inhabitants.add(inhabitant);
+	}
+	
+	public void removeInhabitant(Inhabitant inhabitant) {
+		this.inhabitants.remove(inhabitant);
 	}
 	
 	public String getName() {

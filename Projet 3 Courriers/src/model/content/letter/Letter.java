@@ -14,6 +14,9 @@ public abstract class Letter<C extends Content> extends ExtendedObservable imple
 	protected Inhabitant receiver;
 	protected C content;
 	
+	public Letter(Inhabitant sender, Inhabitant receiver) {
+		this(sender, receiver, null);
+	}
 	
 	public Letter(Inhabitant sender, Inhabitant receiver, C content) {
 		this.sender = sender;
@@ -34,6 +37,10 @@ public abstract class Letter<C extends Content> extends ExtendedObservable imple
 	
 	public C getContent() {
 		return content;
+	}
+	
+	public void setContent(C content) {
+		this.content = content;
 	}
 		
 	public void notify(String message) {

@@ -1,12 +1,11 @@
 package model.content.specialletter;
 
-import model.city.Inhabitant;
 import model.content.letter.Letter;
 
 public class UrgentLetter<L extends Letter<?>> extends SpecialLetter<L>{
 
-	public UrgentLetter(Inhabitant sender, Inhabitant receiver, L content) {
-		super(sender, receiver, content);
+	public UrgentLetter(L content) {
+		super(content);
 	}
 	
 	@Override

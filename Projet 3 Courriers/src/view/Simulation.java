@@ -101,11 +101,11 @@ public class Simulation extends ExtendedObservable {
 			int randContainedLetter = r.nextInt(2); //0 = Simple letter | 1 = PromissoryNote
 			switch(randContainedLetter) {
 			case 1 :
-				letter = new RegisteredLetter<Letter<?>>(sender, receiver, new PromissoryNote(sender, receiver, r.nextInt((int) sender.getBankAccount())));
+				letter = new RegisteredLetter<Letter<?>>(new PromissoryNote(sender, receiver, r.nextInt((int) sender.getBankAccount())));
 				break;
 				
 			default :
-				letter = new RegisteredLetter<Letter<?>>(sender, receiver, new SimpleLetter(sender, receiver, "blabla"));
+				letter = new RegisteredLetter<Letter<?>>(new SimpleLetter(sender, receiver, "blabla"));
 				break;
 			}
 			
@@ -125,11 +125,11 @@ public class Simulation extends ExtendedObservable {
 		
 		switch (randSpecialityType) {
 		case 1 :
-			letter = new UrgentLetter<Letter<?>>(sender, receiver, letter);
+			letter = new UrgentLetter<Letter<?>>(letter);
 			break;
 
 		case 2 :
-			letter = new RegisteredLetter<Letter<?>>(sender, receiver, letter);
+			letter = new RegisteredLetter<Letter<?>>(letter);
 			break;
 		default:
 			break;

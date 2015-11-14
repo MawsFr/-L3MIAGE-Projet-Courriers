@@ -1,13 +1,12 @@
 package model.content.specialletter;
 
-import model.city.Inhabitant;
 import model.content.letter.AknowledgmentOfReceiptLetter;
 import model.content.letter.Letter;
 
 public class RegisteredLetter<L extends Letter<?>> extends SpecialLetter<L>{
 
-	public RegisteredLetter(Inhabitant sender, Inhabitant receiver, L content) {
-		super(sender, receiver, content);
+	public RegisteredLetter(L content) {
+		super(content);
 	}
 
 	@Override

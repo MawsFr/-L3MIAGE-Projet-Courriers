@@ -10,6 +10,14 @@ public class PromissoryNote extends Letter<Money> {
 		super(sender, receiver, new Money(amount));
 	}
 	
+	public PromissoryNote(Inhabitant sender, Inhabitant receiver, Money money) {
+		super(sender, receiver, money);
+	}
+	
+	public PromissoryNote(Inhabitant sender, Inhabitant receiver) {
+		this(sender, receiver, 0);
+	}
+	
 	@Override
 	public void doAction() {
 		this.sender.debit(this.content.getAmount());
