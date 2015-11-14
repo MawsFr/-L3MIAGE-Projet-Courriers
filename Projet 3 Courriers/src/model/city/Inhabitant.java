@@ -17,7 +17,6 @@ public class Inhabitant extends ExtendedObservable {
 		this.name = name;
 		this.city = city;
 		this.bankAccount = bankAccount;
-		this.city.addInhabitant(this);
 	}
 	
 	public void credit(double amount){
@@ -52,6 +51,11 @@ public class Inhabitant extends ExtendedObservable {
 	public City getCity() {
 		return city;
 	}
+	
+	public void setCity(City city) {
+		this.city = city;
+	}
+	
 	
 	@Override
 	public String toString() {

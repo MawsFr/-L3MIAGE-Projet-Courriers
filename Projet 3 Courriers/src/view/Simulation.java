@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import exceptions.LetterDeliveryException;
 import model.city.City;
 import model.city.Inhabitant;
 import model.content.letter.Letter;
@@ -29,7 +30,7 @@ public class Simulation extends ExtendedObservable {
 		r = new Random();
 		tempInhabitants = new ArrayList<Inhabitant>();
 		
-		createCity("BoobsVille", 100);
+		createCity("KebabCity", 100);
 
 	
 		
@@ -48,7 +49,7 @@ public class Simulation extends ExtendedObservable {
 		}
 	}
 
-	public void run() {
+	public void run() throws LetterDeliveryException {
 		Inhabitant sender, receiver;
 		int randNbInhabitant = 0;
 		
