@@ -26,6 +26,10 @@ public abstract class Letter<C extends Content> extends ExtendedObservable imple
 
 	public abstract void doAction();
 	public abstract double getCost();
+	
+	public boolean isAfordableBy(Inhabitant inhabitant) {
+		return inhabitant.getBankAccount() >= this.getCost();
+	}
 
 	public Inhabitant getSender() {
 		return sender;

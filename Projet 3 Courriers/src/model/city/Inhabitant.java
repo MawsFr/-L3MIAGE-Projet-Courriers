@@ -31,8 +31,10 @@ public class Inhabitant extends ExtendedObservable {
 	}
 	
 	public void sendLetter(Letter<?> letter) {
-		city.sendLetter(letter);
-		debit(letter.getCost());
+		if(letter.isAfordableBy(this)) {
+			city.sendLetter(letter);
+			debit(letter.getCost());
+		}
 	}
 	
 	public void receiveLetter(Letter<?> letter) {

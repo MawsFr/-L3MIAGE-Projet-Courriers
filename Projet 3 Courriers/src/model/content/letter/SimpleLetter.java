@@ -5,8 +5,6 @@ import model.content.Text;
 
 public class SimpleLetter extends Letter<Text> {
 
-	
-	
 	public SimpleLetter(Inhabitant sender, Inhabitant receiver) {
 		this(sender, receiver, "");
 	}

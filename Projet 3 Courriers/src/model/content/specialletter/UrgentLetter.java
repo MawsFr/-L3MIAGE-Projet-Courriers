@@ -9,11 +9,6 @@ public class UrgentLetter<L extends Letter<?>> extends SpecialLetter<L>{
 	}
 	
 	@Override
-	public void doAction() {
-		super.doAction();
-	}
-	
-	@Override
 	public double getCost() {
 		return content.getCost() * 2;
 	}

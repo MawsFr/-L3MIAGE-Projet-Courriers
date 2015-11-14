@@ -12,9 +12,7 @@ public class RegisteredLetter<L extends Letter<?>> extends SpecialLetter<L>{
 	@Override
 	public void doAction(){
 		super.doAction();
-		//TODO : Renvoi d'un accusé de reception
 		receiver.sendLetter(new AknowledgmentOfReceiptLetter(receiver, sender, "aknowledgment of receipt for " + this));
-		
 	}
 	
 	public double getCost() {
