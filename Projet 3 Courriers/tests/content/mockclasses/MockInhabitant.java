@@ -1,5 +1,6 @@
 package content.mockclasses;
 
+import exceptions.LetterDeliveryException;
 import model.city.City;
 import model.city.Inhabitant;
 import model.content.letter.Letter;
@@ -15,14 +16,13 @@ public class MockInhabitant extends Inhabitant {
 	}
 	
 	@Override
-	public void sendLetter(Letter<?> letter) {
+	public void sendLetter(Letter<?> letter) throws LetterDeliveryException {
 		super.sendLetter(letter);
 		numberOfLetterSent++;
-		
 	}
 	
 	@Override
-	public void receiveLetter(Letter<?> letter) {
+	public void receiveLetter(Letter<?> letter) throws LetterDeliveryException {
 		super.receiveLetter(letter);
 		numberOfLetterReceived++;
 	}

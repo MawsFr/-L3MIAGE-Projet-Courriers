@@ -7,6 +7,8 @@ import model.content.specialletter.RegisteredLetter;
 
 import org.junit.Test;
 
+import exceptions.LetterDeliveryException;
+
 public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 	
 	@Override
@@ -20,7 +22,7 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 	}
 	
 	@Test
-	public void receiverSendsAcknowledgment() {
+	public void receiverSendsAcknowledgment() throws LetterDeliveryException {
 		assertEquals(0, receiver.getNumberOfLetterSent());
 		createLetter().doAction();
 		assertEquals(1, receiver.getNumberOfLetterSent());

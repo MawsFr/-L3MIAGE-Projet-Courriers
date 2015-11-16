@@ -1,5 +1,6 @@
 package model.content.letter;
 
+import exceptions.LetterDeliveryException;
 import model.city.Inhabitant;
 import model.content.Content;
 import model.observable.ExtendedObservable;
@@ -24,7 +25,7 @@ public abstract class Letter<C extends Content> extends ExtendedObservable imple
 		this.content = content;
 	}
 
-	public abstract void doAction();
+	public abstract void doAction() throws LetterDeliveryException;
 	public abstract double getCost();
 	
 	public boolean isAfordableBy(Inhabitant inhabitant) {

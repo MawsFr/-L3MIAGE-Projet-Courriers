@@ -1,5 +1,6 @@
 package model.content.specialletter;
 
+import exceptions.LetterDeliveryException;
 import model.content.letter.AknowledgmentOfReceiptLetter;
 import model.content.letter.Letter;
 
@@ -10,8 +11,9 @@ public class RegisteredLetter<L extends Letter<?>> extends SpecialLetter<L>{
 	}
 
 	@Override
-	public void doAction(){
+	public void doAction() throws LetterDeliveryException{
 		super.doAction();
+		//TODO : Peut etre vérifier s'il a assez d'argent sinon ca va déclencher une LetterDeliveryException !
 		receiver.sendLetter(new AknowledgmentOfReceiptLetter(receiver, sender, "aknowledgment of receipt for " + this));
 	}
 	

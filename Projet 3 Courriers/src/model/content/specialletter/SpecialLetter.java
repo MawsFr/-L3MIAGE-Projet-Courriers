@@ -1,5 +1,6 @@
 package model.content.specialletter;
 
+import exceptions.LetterDeliveryException;
 import model.content.letter.Letter;
 
 public abstract class SpecialLetter<L extends Letter<?>> extends Letter<L> {
@@ -9,7 +10,7 @@ public abstract class SpecialLetter<L extends Letter<?>> extends Letter<L> {
 	}
 	
 	@Override
-	public void doAction() {
+	public void doAction() throws LetterDeliveryException {
 		content.doAction();
 	}
 	

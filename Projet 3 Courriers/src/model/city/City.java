@@ -98,6 +98,10 @@ public class City extends ExtendedObservable {
 		this.inhabitants.remove(inhabitant);
 	}
 	
+	public boolean hasLettersToSend() {
+		return this.postBox.size() > 0;
+	}
+	
 	public String getName() {
 		return name;
 	}
