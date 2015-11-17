@@ -97,8 +97,6 @@ public class InhabitantTest {
 		sender.sendLetter(letter);
 	}
 	
-	//TODO : Les tests sur registered urgent etc ...
-	
 	@Test(expected=NullPointerException.class)
 	public void receiveNullLetterTest() throws LetterDeliveryException {
 		receiver.receiveLetter(null);

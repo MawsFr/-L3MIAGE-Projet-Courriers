@@ -65,7 +65,7 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 		RegisteredLetter<Letter<?>> registeredPromissoryNote = createLetter(promissoryNote);
 		assertEquals(1 + 10 + 15, registeredPromissoryNote.getCost(), 0);
 		sendLetter(registeredPromissoryNote, 1, 1, 1, 1, promissoryNote.getContent().getAmount());
-		assertEquals(-999 + promissoryNote.getContent().getAmount() - 1 /* 1 is the cost of Thanks and Registered letter */, receiver.getBankAccount(), 0);
+		assertEquals(-999 + promissoryNote.getContent().getAmount() - 1 /* 1 is the cost of Thanks letter */, receiver.getBankAccount(), 0);
 		assertEquals(11.0, promissoryNote.getCost(), 0);
 	}
 	
