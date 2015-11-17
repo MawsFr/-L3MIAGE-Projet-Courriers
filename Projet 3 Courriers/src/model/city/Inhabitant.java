@@ -135,6 +135,14 @@ public class Inhabitant extends ExtendedObservable {
 	}
 	
 	/**
+	 * Sets bank account value
+	 * @param bankAccount The value to set
+	 */
+	public void setBankAccount(double bankAccount) {
+		this.bankAccount = bankAccount;
+	}
+	
+	/**
 	 * @return The name of this inhabitant
 	 */
 	public String getName() {

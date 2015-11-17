@@ -9,6 +9,7 @@ import model.content.specialletter.RegisteredLetter;
 
 import org.junit.Test;
 
+import content.mockclasses.MockInhabitant;
 import exceptions.LetterDeliveryException;
 
 public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
@@ -36,6 +37,51 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 		assertEquals(16, registeredSimpleLetter.getCost(), 0);
 		sendLetter(registeredSimpleLetter, 1, 1, 1, 1, 0);
 	}
+	
+	@Test
+	public void sendAffordableRegisteredPromissoryNoteTest() throws LetterDeliveryException {
+		double receiverBankAccount = receiver.getBankAccount();
+		PromissoryNote promissoryNote = new PromissoryNote(sender, receiver, 1000d);
+		RegisteredLetter<Letter<?>> registeredPromissoryNote = createLetter(promissoryNote);
+		assertEquals(1 + 10 + 15, registeredPromissoryNote.getCost(), 0);
+		sendLetter(registeredPromissoryNote, 1, 2, 2, 1, promissoryNote.getContent().getAmount());
+		assertEquals(receiverBankAccount + promissoryNote.getContent().getAmount() - 2 /* 1 is the cost of Thanks and Registered letter */, receiver.getBankAccount(), 0);
+		assertEquals(11.0, promissoryNote.getCost(), 0);
+		
+	}
+	
+	@Test
+	public void sendUnaffordableAcknoledgementOfReceiptWithSimpleLetterTest() throws LetterDeliveryException {
+		receiver.setBankAccount(0);
+		RegisteredLetter<Letter<?>> registeredSimpleLetter = createLetter();
+		assertEquals(16, registeredSimpleLetter.getCost(), 0);
+		sendLetter(registeredSimpleLetter, 1, 0, 0, 1, 0);
+	}
+	
+	@Test
+	public void sendAffordableThanksLetterButUnaffordableAcknoledgementOfReceiptTest() throws LetterDeliveryException {
+		double receiverBankAccount = receiver.getBankAccount();
+		PromissoryNote promissoryNote = new PromissoryNote(sender, receiver, 1000d);
+		RegisteredLetter<Letter<?>> registeredPromissoryNote = createLetter(promissoryNote);
+		assertEquals(1 + 10 + 15, registeredPromissoryNote.getCost(), 0);
+		sendLetter(registeredPromissoryNote, 1, 2, 2, 1, promissoryNote.getContent().getAmount());
+		assertEquals(receiverBankAccount + promissoryNote.getContent().getAmount() - 2 /* 1 is the cost of Thanks and Registered letter */, receiver.getBankAccount(), 0);
+		assertEquals(11.0, promissoryNote.getCost(), 0);
+	}
+	
+	@Test
+	public void sendUnaffordableAcknoledgementOfReceiptAndThanksLetterTest() throws LetterDeliveryException {
+		receiver.setBankAccount(-2000);
+		PromissoryNote promissoryNote = new PromissoryNote(sender, receiver, 1000d);
+		RegisteredLetter<Letter<?>> registeredPromissoryNote = createLetter(promissoryNote);
+		assertEquals(1 + 10 + 15, registeredPromissoryNote.getCost(), 0);
+		sendLetter(registeredPromissoryNote, 1, 0, 0, 1, promissoryNote.getContent().getAmount());
+//		assertEquals(-2000 + promissoryNote.getContent().getAmount() - 2 /* 1 is the cost of Thanks and Registered letter */, receiver.getBankAccount(), 0);
+//		assertEquals(11.0, promissoryNote.getCost(), 0);
+	}
+	
+	//TODO : Send promissory note with all amount of bankaccount and try to send back unaffordable acknolegment of receipt
+	
 
 
 

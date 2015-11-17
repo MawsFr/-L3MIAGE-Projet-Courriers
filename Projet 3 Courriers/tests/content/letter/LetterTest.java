@@ -66,9 +66,11 @@ public abstract class LetterTest<C extends Content> {
 		if(city2.hasLettersToSend()) {
 			city2.distibuteLetters();
 			assertFalse(city2.hasLettersToSend());
-			assertEquals(expectedReceiverSentLetter, receiver.getNumberOfLetterSent());
-			assertEquals(expectedSenderReceivedLetters, sender.getNumberOfLetterReceived());
 		}
+		
+		assertEquals(expectedReceiverSentLetter, receiver.getNumberOfLetterSent());
+		assertEquals(expectedSenderReceivedLetters, sender.getNumberOfLetterReceived());
+
 	}
 	
 	

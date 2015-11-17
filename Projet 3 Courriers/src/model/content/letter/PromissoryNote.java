@@ -51,8 +51,10 @@ public class PromissoryNote extends Letter<Money> {
 		this.receiver.credit(this.content.getAmount());
 		
 		Letter<Text> thanksLetter = new ThanksLetter(receiver, sender, "thanks for " + this);
-		//TODO : Peut etre vérifier s'il a assez d'argent sinon ca va déclencher une LetterDeliveryException !
-		this.receiver.sendLetter(thanksLetter);
+
+		if(thanksLetter.isAffordableBy(receiver)) {
+			this.receiver.sendLetter(thanksLetter);
+		}
 	}
 	
 	/* (non-Javadoc)

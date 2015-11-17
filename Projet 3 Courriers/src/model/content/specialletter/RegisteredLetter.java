@@ -27,8 +27,11 @@ public class RegisteredLetter<L extends Letter<?>> extends SpecialLetter<L>{
 	@Override
 	public void doAction() throws LetterDeliveryException{
 		super.doAction();
-		//TODO : Peut etre vérifier s'il a assez d'argent sinon ca va déclencher une LetterDeliveryException !
-		receiver.sendLetter(new AcknowledgementOfReceipt(receiver, sender, "aknowledgment of receipt for " + this));
+		AcknowledgementOfReceipt acknoledgementOfReceipt = new AcknowledgementOfReceipt(receiver, sender, "aknowledgment of receipt for " + this);
+		
+		if(acknoledgementOfReceipt.isAffordableBy(receiver)) {
+			receiver.sendLetter(acknoledgementOfReceipt);
+		}
 	}
 	
 	/* (non-Javadoc)
