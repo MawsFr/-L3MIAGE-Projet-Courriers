@@ -60,12 +60,12 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 	
 	@Test
 	public void sendAffordableThanksLetterButUnaffordableAcknoledgementOfReceiptTest() throws LetterDeliveryException {
-		double receiverBankAccount = receiver.getBankAccount();
+		receiver.setBankAccount(-999);
 		PromissoryNote promissoryNote = new PromissoryNote(sender, receiver, 1000d);
 		RegisteredLetter<Letter<?>> registeredPromissoryNote = createLetter(promissoryNote);
 		assertEquals(1 + 10 + 15, registeredPromissoryNote.getCost(), 0);
-		sendLetter(registeredPromissoryNote, 1, 2, 2, 1, promissoryNote.getContent().getAmount());
-		assertEquals(receiverBankAccount + promissoryNote.getContent().getAmount() - 2 /* 1 is the cost of Thanks and Registered letter */, receiver.getBankAccount(), 0);
+		sendLetter(registeredPromissoryNote, 1, 1, 1, 1, promissoryNote.getContent().getAmount());
+		assertEquals(-999 + promissoryNote.getContent().getAmount() - 1 /* 1 is the cost of Thanks and Registered letter */, receiver.getBankAccount(), 0);
 		assertEquals(11.0, promissoryNote.getCost(), 0);
 	}
 	
