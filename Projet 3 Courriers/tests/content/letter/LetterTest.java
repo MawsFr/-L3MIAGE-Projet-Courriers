@@ -63,9 +63,9 @@ public abstract class LetterTest<C extends Content> {
 		assertEquals(expectedReceiverReceivedLetter, receiver.getNumberOfLetterReceived());
 		assertEquals(senderBankAccount - letter.getCost() - promissoryNoteAmount, sender.getBankAccount(), 0);
 
-		if(city1.hasLettersToSend()) {
-			city1.distibuteLetters();
-			assertFalse(city1.hasLettersToSend());
+		if(city2.hasLettersToSend()) {
+			city2.distibuteLetters();
+			assertFalse(city2.hasLettersToSend());
 			assertEquals(expectedReceiverSentLetter, receiver.getNumberOfLetterSent());
 			assertEquals(expectedSenderReceivedLetters, sender.getNumberOfLetterReceived());
 		}
