@@ -9,12 +9,12 @@ import org.junit.Test;
 
 public class UrgentLetterTest extends SpecialLetterTest<Letter<?>>{
 	@Override
-	public Letter<?> createLetter() {
+	public UrgentLetter<Letter<?>> createLetter() {
 		return createLetter(new SimpleLetter(sender, receiver));
 	}
 	
 	@Override
-	public Letter<?> createLetter(Letter<?> content) {
+	public UrgentLetter<Letter<?>> createLetter(Letter<?> content) {
 		return new UrgentLetter<Letter<?>>(content);
 	}
 

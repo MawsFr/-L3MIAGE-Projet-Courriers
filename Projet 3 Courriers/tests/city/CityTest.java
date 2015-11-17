@@ -9,6 +9,9 @@ import org.junit.Test;
 
 import exceptions.LetterDeliveryException;
 
+/**
+ * This class tests the City class 
+ */
 public class CityTest {
 	
 	protected City city;
