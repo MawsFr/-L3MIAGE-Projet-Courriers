@@ -38,15 +38,6 @@ public abstract class Letter<C extends Content> extends ExtendedObservable imple
 	protected C content;
 	
 	/**
-	 * Constructor with the sender and the receiver of this letter
-	 * @param sender The sender of this letter
-	 * @param receiver The receiver of this letter 
-	 */
-	public Letter(Inhabitant sender, Inhabitant receiver) {
-		this(sender, receiver, null);
-	}
-	
-	/**
 	 * Constructor with the sender, the receiver and the content of this letter
 	 * @param sender The sender of this letter
 	 * @param receiver The receiver of this letter 
