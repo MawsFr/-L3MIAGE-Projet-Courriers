@@ -9,6 +9,9 @@ public abstract class SpecialLetter<L extends Letter<?>> extends Letter<L> {
 		super(content.getSender(), content.getReceiver(), content);
 	}
 	
+	/* (non-Javadoc)
+	 * @see model.content.letter.Letter#doAction()
+	 */
 	@Override
 	public void doAction() throws LetterDeliveryException {
 		content.doAction();

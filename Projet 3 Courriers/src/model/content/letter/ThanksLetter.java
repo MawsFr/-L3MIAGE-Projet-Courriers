@@ -8,6 +8,9 @@ public class ThanksLetter extends SimpleLetter {
 		super(sender, receiver, content);
 	}
 	
+	/* (non-Javadoc)
+	 * @see model.content.letter.SimpleLetter#toString()
+	 */
 	@Override
 	public String toString() {
 		return "a thanks letter which is " + super.toString();
