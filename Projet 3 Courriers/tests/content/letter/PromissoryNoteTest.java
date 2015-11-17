@@ -1,13 +1,12 @@
 package content.letter;
 
 import static org.junit.Assert.assertEquals;
+import model.content.Money;
+import model.content.letter.PromissoryNote;
 
 import org.junit.Test;
 
 import exceptions.LetterDeliveryException;
-import model.content.Money;
-import model.content.letter.Letter;
-import model.content.letter.PromissoryNote;
 
 public class PromissoryNoteTest extends LetterTest<Money>{
 

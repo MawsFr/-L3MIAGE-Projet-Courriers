@@ -1,9 +1,8 @@
 package city;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import model.city.City;
 import model.city.Inhabitant;
-import model.content.letter.Letter;
 import model.content.letter.PromissoryNote;
 import model.content.letter.SimpleLetter;
 

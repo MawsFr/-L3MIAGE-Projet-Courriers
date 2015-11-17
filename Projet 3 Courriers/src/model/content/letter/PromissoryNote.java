@@ -62,6 +62,10 @@ public class PromissoryNote extends Letter<Money> {
 	 */
 	@Override
 	public boolean isAffordableBy(Inhabitant inhabitant) {
+		if(inhabitant == null) {
+			throw new NullPointerException("You must specify a non null inhabitant parameter");
+		}
+		
 		return inhabitant.getBankAccount() > (getCost() + content.getAmount());
 	}
 	

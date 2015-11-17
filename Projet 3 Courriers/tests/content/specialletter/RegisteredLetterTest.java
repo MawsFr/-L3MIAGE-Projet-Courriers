@@ -1,7 +1,6 @@
 package content.specialletter;
 
 import static org.junit.Assert.assertEquals;
-import model.content.Money;
 import model.content.letter.Letter;
 import model.content.letter.PromissoryNote;
 import model.content.letter.SimpleLetter;
@@ -9,7 +8,6 @@ import model.content.specialletter.RegisteredLetter;
 
 import org.junit.Test;
 
-import content.mockclasses.MockInhabitant;
 import exceptions.LetterDeliveryException;
 
 public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{

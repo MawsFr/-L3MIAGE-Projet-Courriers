@@ -17,6 +17,10 @@ public class Money implements Content{
 	 * @param amount The money amount
 	 */
 	public Money(double amount){
+		if(amount <= 0) {
+			throw new IllegalArgumentException("You must specify a positive amount of money");
+		}
+		
 		//TODO : positve not null or negative
 		this.amount = amount;
 	}

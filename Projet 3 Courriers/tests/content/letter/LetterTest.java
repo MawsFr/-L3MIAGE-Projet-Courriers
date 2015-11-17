@@ -1,17 +1,17 @@
 package content.letter;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import model.city.City;
 import model.content.Content;
 import model.content.letter.Letter;
-import model.content.letter.PromissoryNote;
-import model.content.letter.SimpleLetter;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import content.mockclasses.MockInhabitant;
 import exceptions.LetterDeliveryException;
-import static org.junit.Assert.*;
 
 
 public abstract class LetterTest<C extends Content> {
