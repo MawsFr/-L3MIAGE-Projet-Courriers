@@ -3,6 +3,12 @@ package model.content.letter;
 import model.city.Inhabitant;
 import model.content.Text;
 
+/**
+ * This class represents a simple letter with a text content
+ * 
+ * @see Letter
+ * @see Text
+ */
 public class SimpleLetter extends Letter<Text> {
 
 	/**

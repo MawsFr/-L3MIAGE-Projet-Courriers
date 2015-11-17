@@ -8,6 +8,7 @@ import model.content.Text;
 /**
  * This class represents a Promissory note which will containt an amount of money to send to an inhabitant
  * 
+ * @see Letter
  * @see Money
  */
 public class PromissoryNote extends Letter<Money> {

@@ -4,8 +4,19 @@ import exceptions.LetterDeliveryException;
 import model.content.letter.AcknowledgementOfReceipt;
 import model.content.letter.Letter;
 
+/**
+ * This class represents a Registered letter which is replied by an Acknowledgement of receipt when received by the receiver
+ * @param <L> The type of the content contained
+ * 
+ * @see SpecialLetter
+ * @see Letter
+ */
 public class RegisteredLetter<L extends Letter<?>> extends SpecialLetter<L>{
 
+	/**
+	 * Constructor with the content of this registered letter
+	 * @param content The content of this registered letter
+	 */
 	public RegisteredLetter(L content) {
 		super(content);
 	}

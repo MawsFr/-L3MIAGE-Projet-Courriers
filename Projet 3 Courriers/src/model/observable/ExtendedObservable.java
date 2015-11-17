@@ -4,6 +4,8 @@ import java.util.Observable;
 
 /**
  * This class is an extended version of Observable which regroup setChanged and notifyObservers in one function
+ * 
+ * @see Observable
  */
 public class ExtendedObservable extends Observable{
 	

@@ -53,6 +53,7 @@ public abstract class Letter<C extends Content> extends ExtendedObservable imple
 	 * @param content The content of this letter 
 	 */	
 	public Letter(Inhabitant sender, Inhabitant receiver, C content) {
+		//TODO : Vérifier les parametres
 		this.sender = sender;
 		this.receiver = receiver;
 		this.content = content;
