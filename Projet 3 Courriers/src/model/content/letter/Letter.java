@@ -53,6 +53,23 @@ public abstract class Letter<C extends Content> extends ExtendedObservable imple
 	 * @param content The content of this letter 
 	 */	
 	public Letter(Inhabitant sender, Inhabitant receiver, C content) {
+		if(sender == null) {
+			throw new NullPointerException("You must specify a non null sender parameter");
+		}
+		
+		if(receiver == null) {
+			throw new NullPointerException("You must specify a non null receiver parameter");
+		}
+		
+		if(content == null) {
+			throw new NullPointerException("You must specify a non null content");
+		}
+		
+		if(sender == receiver) {
+			throw new IllegalArgumentException("The sender cannot be equal to the receiver");
+		}
+		
+		//TODO : Peut etre verifier si content est null en fait ..
 		//TODO : Vérifier les parametres
 		this.sender = sender;
 		this.receiver = receiver;
@@ -76,6 +93,10 @@ public abstract class Letter<C extends Content> extends ExtendedObservable imple
 	 * @return True if yes, else false
 	 */
 	public boolean isAffordableBy(Inhabitant inhabitant) {
+		if(inhabitant == null) {
+			throw new NullPointerException("You must specify a non null inhabitant parameter");
+		}
+		
 		return inhabitant.getBankAccount() >= this.getCost();
 	}
 
@@ -100,13 +121,13 @@ public abstract class Letter<C extends Content> extends ExtendedObservable imple
 		return content;
 	}
 	
-	/**
-	 * Sets the content of this letter
-	 * @param content The content to set (can be null)
-	 */
-	public void setContent(C content) {
-		this.content = content;
-	}
+//	/**
+//	 * Sets the content of this letter
+//	 * @param content The content to set (can be null)
+//	 */
+//	public void setContent(C content) {
+//		this.content = content;
+//	}
 		
 	public void notify(String message) {
 		setChanged();

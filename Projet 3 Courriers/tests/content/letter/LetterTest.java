@@ -73,9 +73,33 @@ public abstract class LetterTest<C extends Content> {
 
 	}
 	
+	@Test(expected=NullPointerException.class)
+	public void letterWithNullSenderTest() {
+		sender = null;
+		createLetter();
+	}
 	
+	@Test(expected=NullPointerException.class)
+	public void letterWithNullReceiverTest() {
+		receiver = null;
+		createLetter();
+	}
 	
+	@Test(expected=NullPointerException.class)
+	public void letterWithNullContentTest() {
+		createLetter(null);
+	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void letteWithSenderEqualsReceiverTest() {
+		sender = receiver;
+		createLetter();
+	}
+	
+	@Test(expected=NullPointerException.class)
+	public void nullInhabitantParameterInIsAffordableLetterTest() {
+		createLetter().isAffordableBy(null);
+	}
 	
 
 }
