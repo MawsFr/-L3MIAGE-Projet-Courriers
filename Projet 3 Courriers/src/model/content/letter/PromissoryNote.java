@@ -30,7 +30,7 @@ public class PromissoryNote extends Letter<Money> {
 	}
 	
 	@Override
-	public boolean isAfordableBy(Inhabitant inhabitant) {
+	public boolean isAffordableBy(Inhabitant inhabitant) {
 		return inhabitant.getBankAccount() > (getCost() + content.getAmount());
 	}
 	

@@ -113,7 +113,7 @@ public class InhabitantTest {
 		assertEquals(letter.getReceiver(), receiver);
 		assertEquals(0, sender.getNumberOfLetterSent());
 		assertEquals(5000.0d, sender.getBankAccount(), 0);
-		assertTrue(letter.isAfordableBy(sender));
+		assertTrue(letter.isAffordableBy(sender));
 		sender.sendLetter(letter);
 		assertTrue(city.hasLettersToSend());
 		assertEquals(1, city.getNbLettersInPostBox());

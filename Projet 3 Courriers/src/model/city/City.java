@@ -7,16 +7,41 @@ import exceptions.LetterDeliveryException;
 import model.content.letter.Letter;
 import model.observable.ExtendedObservable;
 
+/**
+ * This class represents a city which manages its inhabitant and there letters
+ * 
+ * @see Inhabitant
+ */
 public class City extends ExtendedObservable {
 
+	/**
+	 * The name of the city
+	 */
 	protected String name;
+	
+	/**
+	 * The inhabitants of this city 
+	 */
 	protected List<Inhabitant> inhabitants;
+	
+	/**
+	 * The postBox containing the letters of the inhabitants 
+	 */
 	protected List<Letter<?>> postBox;
 	
+	/**
+	 * Constructor with namethe city
+	 * @param name The name of the city
+	 */
 	public City(String name) {
 		this(name, 0);
 	}
 	
+	/**
+	 * Constructor with the name of the city and the number of inhabitants to create at the instanciation of the city
+	 * @param name The name of the city
+	 * @param nbInabitants The number of inhabitant in the city 
+	 */
 	public City(String name, int nbInabitants) {
 		if(name == null) {
 			throw new NullPointerException("You must specify a non null parameter for city's name");
@@ -39,7 +64,11 @@ public class City extends ExtendedObservable {
 		}
 	}
 
-	public void sendLetter(Letter<?> letter){
+	/**
+	 * Adds a letter to send to an inhabitant
+	 * @param letter The letter to send
+	 */
+	public void sendLetter(Letter<?> letter) {
 		if(letter == null) {
 			throw new NullPointerException("You must specify a non null letter to send argument");
 		}
@@ -48,6 +77,10 @@ public class City extends ExtendedObservable {
 		this.postBox.add(letter);
 	}
 	
+	/**
+	 * Distributes the letter to inhabitants
+	 * @throws LetterDeliveryException If there are no letters to distribute
+	 */
 	public void distibuteLetters() throws LetterDeliveryException {
 		if(postBox.isEmpty()) {
 			throw new LetterDeliveryException("There are no letters to distribute !");
@@ -69,6 +102,11 @@ public class City extends ExtendedObservable {
 		}
 	}
 	
+	/**
+	 * Adds an inhabitant to the city
+	 * @param inhabitant The inhabitant to add
+	 * @throws IllegalArgumentException If the inhabitant already belongs to this city
+	 */
 	public void addInhabitant(Inhabitant inhabitant) {
 		if(inhabitant == null) {
 			throw new NullPointerException("You must specify a non null inhabitant argument to add to the city");
@@ -86,6 +124,11 @@ public class City extends ExtendedObservable {
 		inhabitant.setCity(this);
 	}
 	
+	/**
+	 * Removes an inhabitant from the city
+	 * @param inhabitant The inhabitant to remove
+	 * @throws IllegalArgumentException If the inhabitant doesn't belong to this city
+	 */
 	public void removeInhabitant(Inhabitant inhabitant) {
 		if(inhabitant == null) {
 			throw new NullPointerException("You must specify a non null Inhabitant to remove from the city");
@@ -98,26 +141,44 @@ public class City extends ExtendedObservable {
 		this.inhabitants.remove(inhabitant);
 	}
 	
+	/**
+	 * @return True if there are letter to distribute, else false
+	 */
 	public boolean hasLettersToSend() {
 		return this.postBox.size() > 0;
 	}
 	
+	/**
+	 * @return The name of this city
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * @return The number of inhabitants in this city
+	 */
 	public int getNbInhabitants() {
 		return this.inhabitants.size();
 	}
 	
+	/**
+	 * @return The list of inhabitants
+	 */
 	public List<Inhabitant> getInhabitants() {
 		return inhabitants;
 	}
 	
+	/**
+	 * @return The list of letter to send
+	 */
 	public List<Letter<?>> getPostBox() {
 		return postBox;
 	}
 	
+	/**
+	 * @return The number of letters to distribute
+	 */
 	public int getNbLettersInPostBox() {
 		return postBox.size();
 	}
