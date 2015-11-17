@@ -76,8 +76,8 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 		RegisteredLetter<Letter<?>> registeredPromissoryNote = createLetter(promissoryNote);
 		assertEquals(1 + 10 + 15, registeredPromissoryNote.getCost(), 0);
 		sendLetter(registeredPromissoryNote, 1, 0, 0, 1, promissoryNote.getContent().getAmount());
-//		assertEquals(-2000 + promissoryNote.getContent().getAmount() - 2 /* 1 is the cost of Thanks and Registered letter */, receiver.getBankAccount(), 0);
-//		assertEquals(11.0, promissoryNote.getCost(), 0);
+		assertEquals(-2000 + promissoryNote.getContent().getAmount() /* There are no cost for a thanks letter or acknoledgement of receipt because the receiver has not enough money*/, receiver.getBankAccount(), 0);
+		assertEquals(11.0, promissoryNote.getCost(), 0);
 	}
 	
 	//TODO : Send promissory note with all amount of bankaccount and try to send back unaffordable acknolegment of receipt
