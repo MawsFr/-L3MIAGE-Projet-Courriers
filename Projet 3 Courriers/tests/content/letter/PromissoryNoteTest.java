@@ -21,7 +21,7 @@ public class PromissoryNoteTest extends LetterTest<Money>{
 	}
 	
 	@Test
-	public void sendAfordablePromissoryNoteTest() throws LetterDeliveryException {
+	public void sendAffordablePromissoryNoteTest() throws LetterDeliveryException {
 		double receiverBankAccount = receiver.getBankAccount();
 		PromissoryNote promissoryNote = createLetter(new Money(2000d));
 		sendLetter(promissoryNote, 1, 1, 1, 1, promissoryNote.getContent().getAmount());

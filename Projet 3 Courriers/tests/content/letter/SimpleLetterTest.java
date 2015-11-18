@@ -31,7 +31,7 @@ public class SimpleLetterTest extends LetterTest<Text> {
 	}
 	
 	@Test
-	public void sendAfordableSimpleLetterTest() throws LetterDeliveryException {
+	public void sendAffordableSimpleLetterTest() throws LetterDeliveryException {
 		Letter<?> simpleLetter = createLetter("Bonjour");
 		sendLetter(simpleLetter, 1, 0, 0, 1, 0);
 	}

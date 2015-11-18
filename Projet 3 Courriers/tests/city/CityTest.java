@@ -50,6 +50,14 @@ public class CityTest {
 		city.sendLetter(null);
 	}
 	
+	/**
+	 * Tests if it indeed throws an exception when we try to distribute letters when the post box is empty
+	 * (and if you really read all comments lol) 
+	 * PS: Si vous lisez ce commentaire, envoyez nous un 
+	 * petit e-mail. Car si vous le faites c'est que vous avez
+	 * vraiment plus de courage que nous tous réunis !! Et bon 
+	 * courage pour la suite de la lecture xD   
+	 */
 	@Test(expected=LetterDeliveryException.class)
 	public void distributeEmptyPostBoxTest() throws LetterDeliveryException {
 		assertEquals(0, city.getNbLettersInPostBox());
