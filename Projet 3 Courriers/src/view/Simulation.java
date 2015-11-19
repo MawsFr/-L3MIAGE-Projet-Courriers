@@ -25,6 +25,18 @@ public class Simulation extends ExtendedObservable {
 	
 	
 	public Simulation(ConsoleView consoleView, int nbDays) {
+		if(consoleView == null) {
+			throw new NullPointerException("You must specify a non null consoleView");
+		}
+		
+		if(nbDays <= 0) {
+			throw new IllegalArgumentException("You must specify a positive number !");
+		}
+		
+		if(nbDays % 2 != 0) {
+			throw new IllegalArgumentException("You must specify an even number !"); //We want to distribute letters sent the last time
+		}
+		
 		this.consoleView = consoleView;
 		this.nbDays = nbDays;
 		r = new Random();
@@ -37,6 +49,11 @@ public class Simulation extends ExtendedObservable {
 	}
 	
 	protected void createCity(String name, int nbInhabitants) {
+		if(name == null) {
+			throw new NullPointerException("You must specify a non null name for the city");
+		}
+		
+		
 		this.addObserver(consoleView);
 		
 		notify("Creating " + city + " city");
@@ -80,15 +97,22 @@ public class Simulation extends ExtendedObservable {
 		
 	}
 	
-	private void resetTempList() {
+	protected void resetTempList() {
 		this.tempInhabitants.clear();
 		for(Inhabitant inhabitant : city.getInhabitants()) {
 			tempInhabitants.add(inhabitant);
 		}
 	}
 
-	protected Letter<?> getRandomLetter(Inhabitant sender, Inhabitant receiver) {
-		//TODO : Check if inhabitant has enough money to do a promissory note
+	public Letter<?> getRandomLetter(Inhabitant sender, Inhabitant receiver) {
+		if(sender == null) {
+			throw new NullPointerException("You must specify a non null sender");
+		}
+		
+		if(receiver == null) {
+			throw new NullPointerException("You must specify a non null receiver");
+		}
+		
 		Letter<?> letter = null;
 		int randLetterType = r.nextInt(3); //0 = Simple Letter | 1 = PromissoryNote | 2 = Registered Letter
 		switch(randLetterType) {
@@ -141,8 +165,16 @@ public class Simulation extends ExtendedObservable {
 		return letter;
 	}
 	
-	protected Inhabitant getRandomInhabitant() {
+	public Inhabitant getRandomInhabitant() {
 		return tempInhabitants.remove(r.nextInt(tempInhabitants.size()));
+	}
+	
+	public List<Inhabitant> getTempInhabitants() {
+		return tempInhabitants;
+	}
+	
+	public City getCity() {
+		return city;
 	}
 
 }
