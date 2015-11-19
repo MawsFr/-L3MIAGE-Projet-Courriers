@@ -54,6 +54,10 @@ public class Inhabitant extends ExtendedObservable {
 			throw new NullPointerException("You must specify a city which this inhabitant belongs to");
 		}
 		
+		if(bankAccount < 0) {
+			throw new IllegalArgumentException("You must specify a positive or null bank account amount !");
+		}
+		
 		//TODO : Si l'on autorise pas le découvert vérifier que le bankaccount est supérieu ou égal a zéro
 		this.name = name;
 		this.city = city;
