@@ -1,10 +1,7 @@
 package city;
 
-import static org.junit.Assert.assertEquals;
 import model.city.City;
 import model.city.Inhabitant;
-import model.content.letter.PromissoryNote;
-import model.content.letter.SimpleLetter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +9,9 @@ import org.junit.Test;
 import content.mockclasses.MockInhabitant;
 import exceptions.LetterDeliveryException;
 
+/**
+ * This class tests the inhabitant class
+ */
 public class InhabitantTest {
 	
 	/**

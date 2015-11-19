@@ -16,6 +16,10 @@ import content.mockclasses.MockInhabitant;
 import exceptions.LetterDeliveryException;
 
 
+/**
+ * This class tests the letter class
+ * @param <C> The content type of the letter to create 
+ */
 public abstract class LetterTest<C extends Content> {
 	
 	/**

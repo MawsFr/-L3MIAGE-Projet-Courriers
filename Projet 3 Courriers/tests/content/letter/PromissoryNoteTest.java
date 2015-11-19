@@ -2,12 +2,19 @@ package content.letter;
 
 import static org.junit.Assert.assertEquals;
 import model.content.Money;
+import model.content.Text;
 import model.content.letter.PromissoryNote;
+import model.content.letter.SimpleLetter;
 
 import org.junit.Test;
 
 import exceptions.LetterDeliveryException;
 
+
+/**
+ * Thsi class tests the PromissoryNote class 
+ *
+ */
 public class PromissoryNoteTest extends LetterTest<Money>{
 
 	@Override
@@ -20,6 +27,9 @@ public class PromissoryNoteTest extends LetterTest<Money>{
 		return new PromissoryNote(sender, receiver, content);
 	}
 	
+	/**
+	 * Tests sending an affordable promissory note
+	 */
 	@Test
 	public void sendAffordablePromissoryNoteTest() throws LetterDeliveryException {
 		double receiverBankAccount = receiver.getBankAccount();
@@ -29,6 +39,13 @@ public class PromissoryNoteTest extends LetterTest<Money>{
 		assertEquals(21.0, promissoryNote.getCost(), 0);
 	}
 	
-	//TODO : sendUnaffordablePromissoryNoteTest
-
+	/**
+	 * Tests if a promissory note indeed contains Money
+	 */
+	@Test
+	public void contentInPromissoryNoteIsMoney() {
+		@SuppressWarnings("unused")
+		Money money = new PromissoryNote(sender, receiver).getContent();
+	}
+	
 }
