@@ -36,5 +36,7 @@ public class SimpleLetterTest extends LetterTest<Text> {
 		sendLetter(simpleLetter, 1, 0, 0, 1, 0);
 	}
 	
+	//sendUnaffordableSimpleLetterTest
+	
 
 }

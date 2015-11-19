@@ -57,24 +57,24 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 	
 	@Test
 	public void sendAffordableThanksLetterButUnaffordableAcknoledgementOfReceiptTest() throws LetterDeliveryException {
-		receiver.setBankAccount(-999);
+		receiver.setBankAccount(-999d);
 		PromissoryNote promissoryNote = new PromissoryNote(sender, receiver, 1000d);
 		RegisteredLetter<Letter<?>> registeredPromissoryNote = createLetter(promissoryNote);
-		assertEquals(1 + 10 + 15, registeredPromissoryNote.getCost(), 0);
+		assertEquals(1d + 10d + 15d, registeredPromissoryNote.getCost(), 0);
 		sendLetter(registeredPromissoryNote, 1, 1, 1, 1, promissoryNote.getContent().getAmount());
-		assertEquals(-999 + promissoryNote.getContent().getAmount() - 1 /* 1 is the cost of Thanks letter */, receiver.getBankAccount(), 0);
-		assertEquals(11.0, promissoryNote.getCost(), 0);
+		assertEquals(-999d + promissoryNote.getContent().getAmount() - 1 /* 1 is the cost of Thanks letter */, receiver.getBankAccount(), 0);
+		assertEquals(11.0d, promissoryNote.getCost(), 0);
 	}
 	
 	@Test
 	public void sendUnaffordableAcknoledgementOfReceiptAndThanksLetterTest() throws LetterDeliveryException {
-		receiver.setBankAccount(-2000);
+		receiver.setBankAccount(-2000d);
 		PromissoryNote promissoryNote = new PromissoryNote(sender, receiver, 1000d);
 		RegisteredLetter<Letter<?>> registeredPromissoryNote = createLetter(promissoryNote);
-		assertEquals(1 + 10 + 15, registeredPromissoryNote.getCost(), 0);
+		assertEquals(1d + 10d + 15d, registeredPromissoryNote.getCost(), 0);
 		sendLetter(registeredPromissoryNote, 1, 0, 0, 1, promissoryNote.getContent().getAmount());
-		assertEquals(-2000 + promissoryNote.getContent().getAmount() /* There are no cost for a thanks letter or acknoledgement of receipt because the receiver has not enough money*/, receiver.getBankAccount(), 0);
-		assertEquals(11.0, promissoryNote.getCost(), 0);
+		assertEquals(-2000d + promissoryNote.getContent().getAmount() /* There are no cost for a thanks letter or acknoledgement of receipt because the receiver has not enough money*/, receiver.getBankAccount(), 0);
+		assertEquals(11.0d, promissoryNote.getCost(), 0);
 	}
 	
 	//TODO : Send promissory note with all amount of bankaccount and try to send back unaffordable acknolegment of receipt

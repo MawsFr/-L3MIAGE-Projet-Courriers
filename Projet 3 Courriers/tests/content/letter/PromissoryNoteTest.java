@@ -28,5 +28,7 @@ public class PromissoryNoteTest extends LetterTest<Money>{
 		assertEquals(receiverBankAccount + promissoryNote.getContent().getAmount() - 1 /* 1 is the cost of Thanks letter */, receiver.getBankAccount(), 0);
 		assertEquals(21.0, promissoryNote.getCost(), 0);
 	}
+	
+	//TODO : sendUnaffordablePromissoryNoteTest
 
 }
