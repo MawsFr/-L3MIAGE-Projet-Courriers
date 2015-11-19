@@ -53,17 +53,19 @@ public class Simulation extends ExtendedObservable {
 		Inhabitant sender, receiver;
 		int randNbInhabitant = 0;
 		
-		do {
-			randNbInhabitant = r.nextInt(city.getNbInhabitants()) / 2;
-		} while(randNbInhabitant == 0);
+		
 		
 		notify("Mailing letters for " + nbDays + " days");
 		
 		for(int i = 1; i <= nbDays; i++) {
+			
 			resetTempList();
 			notify("**************************************************");
 			notify("Day " + i);
 			if((i - 1) % 2 == 0) {
+				do {
+					randNbInhabitant = r.nextInt(city.getNbInhabitants()) / 2;
+				} while(randNbInhabitant == 0);
 				
 				for(int j = 0; j < randNbInhabitant; j++) {
 					sender = getRandomInhabitant();
