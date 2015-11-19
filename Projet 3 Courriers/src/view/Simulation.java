@@ -14,16 +14,44 @@ import model.content.specialletter.RegisteredLetter;
 import model.content.specialletter.UrgentLetter;
 import model.observable.ExtendedObservable;
 
+/**
+ * This class simulate the logic of the software
+ * 
+ * see run function comment
+ */
 public class Simulation extends ExtendedObservable {
 
+	/**
+	 * The number of days of the simulation
+	 */
 	protected int nbDays;
+	
+	/**
+	 * The console view 
+	 */
 	protected ConsoleView consoleView;
+	
+	/**
+	 * The city where we simulate 
+	 */
 	protected City city;
+	
+	/**
+	 * A random number genertor 
+	 */
 	protected Random r;
 	
+	/**
+	 * A temps list of the city's inhabitant to help choosing random inhabitants
+	 */
 	protected List<Inhabitant> tempInhabitants;
 	
 	
+	/**
+	 * Constructor with console view and number of days for the simulation
+	 * @param consoleView The console view
+	 * @param nbDays The number of days for the simulation
+	 */
 	public Simulation(ConsoleView consoleView, int nbDays) {
 		if(consoleView == null) {
 			throw new NullPointerException("You must specify a non null consoleView");
@@ -43,16 +71,18 @@ public class Simulation extends ExtendedObservable {
 		tempInhabitants = new ArrayList<Inhabitant>();
 		
 		createCity("KebabCity", 100);
-
-	
 		
 	}
 	
+	/**
+	 * Creates the city and its inhabitants
+	 * @param name The name of the city
+	 * @param nbInhabitants The number of inhabitants
+	 */
 	protected void createCity(String name, int nbInhabitants) {
 		if(name == null) {
 			throw new NullPointerException("You must specify a non null name for the city");
 		}
-		
 		
 		this.addObserver(consoleView);
 		
@@ -66,6 +96,19 @@ public class Simulation extends ExtendedObservable {
 		}
 	}
 
+	/**
+	 * Runs the simulation
+	 * Chooses a random number of days (recalculated each time)
+	 * Chooses a random number of sender and receiver (same number for both)
+	 * Chooses a random sender
+	 * Chooses a random receiver
+	 * Chooses a random letter with a container or not
+	 * sender sends the letter
+	 * city distributes the letter
+	 * receiver receives the letter
+	 * receiver sends back special letter
+	 * @throws LetterDeliveryException
+	 */
 	public void run() throws LetterDeliveryException {
 		Inhabitant sender, receiver;
 		int randNbInhabitant = 0;
@@ -79,17 +122,19 @@ public class Simulation extends ExtendedObservable {
 			resetTempList();
 			notify("**************************************************");
 			notify("Day " + i);
-			if((i - 1) % 2 == 0) {
-				do {
+			if((i - 1) % 2 == 0) { //If we are in an even days
+				//We choose the number of sender and receiver
+				do { 
 					randNbInhabitant = r.nextInt(city.getNbInhabitants()) / 2;
 				} while(randNbInhabitant == 0);
 				
+				//We send letters
 				for(int j = 0; j < randNbInhabitant; j++) {
 					sender = getRandomInhabitant();
 					receiver = getRandomInhabitant();
 					sender.sendLetter(getRandomLetter(sender, receiver));
 				}
-			} else {
+			} else { //if we are in an odd day
 				city.distibuteLetters();
 			}
 			
@@ -97,6 +142,9 @@ public class Simulation extends ExtendedObservable {
 		
 	}
 	
+	/**
+	 * Resets the temp list
+	 */
 	protected void resetTempList() {
 		this.tempInhabitants.clear();
 		for(Inhabitant inhabitant : city.getInhabitants()) {
@@ -104,6 +152,11 @@ public class Simulation extends ExtendedObservable {
 		}
 	}
 
+	/**
+	 * @param sender The sender of the letter
+	 * @param receiver The receiver of the letter
+	 * @return A random letter with containing letter or not
+	 */
 	public Letter<?> getRandomLetter(Inhabitant sender, Inhabitant receiver) {
 		if(sender == null) {
 			throw new NullPointerException("You must specify a non null sender");
@@ -114,6 +167,8 @@ public class Simulation extends ExtendedObservable {
 		}
 		
 		Letter<?> letter = null;
+		
+		//Choosing contained letter
 		int randLetterType = r.nextInt(3); //0 = Simple Letter | 1 = PromissoryNote | 2 = Registered Letter
 		switch(randLetterType) {
 		case 1:
@@ -142,12 +197,14 @@ public class Simulation extends ExtendedObservable {
 		
 		//assert(letter != null);
 		
+		
+		//Choosing container
 		int randSpecialityType;
 		
 		if(randLetterType == 2) { //if letter is a registered letter we don't wan't another registered letter to contain it
 			randSpecialityType = r.nextInt(2); //0 = Not Special | 1 = Urgent Letter
-		} else {
-			randSpecialityType = r.nextInt(2); //0 = Not Special | 1 = Urgent Letter | 2 = Registered letter
+		} else { //it's just a simple letter or promissory note
+			randSpecialityType = r.nextInt(3); //0 = Not Special | 1 = Urgent Letter | 2 = Registered letter
 		}
 		
 		switch (randSpecialityType) {
@@ -165,16 +222,11 @@ public class Simulation extends ExtendedObservable {
 		return letter;
 	}
 	
+	/**
+	 * @return A random inhabitant frome the temp list
+	 */
 	public Inhabitant getRandomInhabitant() {
 		return tempInhabitants.remove(r.nextInt(tempInhabitants.size()));
-	}
-	
-	public List<Inhabitant> getTempInhabitants() {
-		return tempInhabitants;
-	}
-	
-	public City getCity() {
-		return city;
 	}
 
 }

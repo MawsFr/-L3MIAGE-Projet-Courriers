@@ -196,5 +196,28 @@ public abstract class LetterTest<C extends Content> {
 		SimpleLetter letter = new SimpleLetter(receiver, sender);
 		receiver.receiveLetter(letter);
 	}
+	
+	/**
+	 * Tests sending multiple letters
+	 * @throws LetterDeliveryException 
+	 */
+	public void send2LettersTest() throws LetterDeliveryException {
+		Letter<?> letter = createLetter();
+		Letter<?> letter2 = createLetter();
+		sender.sendLetter(letter);
+		sender.sendLetter(letter2);
+		city1.distibuteLetters();
+		assertEquals(5000d - letter.getCost() - letter2.getCost(), sender.getBankAccount(), 0);
+		city2.distibuteLetters();
+		assertEquals(5000d - 4, receiver.getBankAccount(), 0);
+		
+		assertEquals(2, receiver.getNumberOfLetterSent());
+		assertEquals(2, receiver.getNumberOfLetterReceived());
+		assertEquals(2, receiver.getNumberOfLetterSent());
+		assertEquals(2, receiver.getNumberOfLetterReceived());
+		
+		
+		
+	}
 
 }
