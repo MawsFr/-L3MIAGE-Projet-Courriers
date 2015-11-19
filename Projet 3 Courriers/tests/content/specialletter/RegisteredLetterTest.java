@@ -10,6 +10,9 @@ import org.junit.Test;
 
 import exceptions.LetterDeliveryException;
 
+/**
+ * This class tests a registered letter
+ */
 public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 
 	@Override
@@ -22,6 +25,9 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 		return new RegisteredLetter<Letter<?>>(content);
 	}
 
+	/**
+	 * Tests if teh receiver indeed send back an ackowledgement of receipt after receiving a registered letter
+	 */
 	@Test
 	public void receiverSendsAcknowledgment() throws LetterDeliveryException {
 		assertEquals(0, receiver.getNumberOfLetterSent());
@@ -29,6 +35,9 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 		assertEquals(1, receiver.getNumberOfLetterSent());
 	}
 
+	/**
+	 * Tests sending an affordable registered simple letter
+	 */
 	@Test
 	public void sendAffordableRegisteredSimpleLetterTest() throws LetterDeliveryException {
 		RegisteredLetter<Letter<?>> registeredSimpleLetter = createLetter();
@@ -36,6 +45,9 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 		sendLetter(registeredSimpleLetter, 1, 1, 1, 1, 0);
 	}
 	
+	/**
+	 * Tests sending a registered promissory note letter
+	 */
 	@Test
 	public void sendAffordableRegisteredPromissoryNoteTest() throws LetterDeliveryException {
 		double receiverBankAccount = receiver.getBankAccount();
@@ -47,6 +59,10 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 		assertEquals(receiverBankAccount + promissoryNote.getContent().getAmount() - 2 /* 2 is the cost of Thanks and Registered letter */, receiver.getBankAccount(), 0);	
 	}
 	
+	/**
+	 * Tests sending an unaffordable acknoledgement of receipt after receiving a registered simple letter
+	 * There are no exception because it's not the fault of the receiver if his account is not reloaded of money
+	 */
 	@Test
 	public void sendUnaffordableAcknoledgementOfReceiptWithSimpleLetterTest() throws LetterDeliveryException {
 		receiver.setBankAccount(0);
@@ -55,6 +71,9 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 		sendLetter(registeredSimpleLetter, 1, 0, 0, 1, 0);
 	}
 	
+	/**
+	 * Tests sending back an affordable thanks letter but unaffordable acknoledgement of receipt
+	 */
 	@Test
 	public void sendAffordableThanksLetterButUnaffordableAcknoledgementOfReceiptTest() throws LetterDeliveryException {
 		receiver.setBankAccount(-999d);
@@ -66,6 +85,9 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 		assertEquals(11.0d, promissoryNote.getCost(), 0);
 	}
 	
+	/**
+	 * Tests sending back unaffordable thanks letter and acknoledgement of receipt
+	 */
 	@Test
 	public void sendUnaffordableAcknoledgementOfReceiptAndThanksLetterTest() throws LetterDeliveryException {
 		receiver.setBankAccount(-2000d);
@@ -77,9 +99,4 @@ public class RegisteredLetterTest extends SpecialLetterTest<Letter<?>>{
 		assertEquals(11.0d, promissoryNote.getCost(), 0);
 	}
 	
-	//TODO : Send promissory note with all amount of bankaccount and try to send back unaffordable acknolegment of receipt
-	
-
-
-
 }

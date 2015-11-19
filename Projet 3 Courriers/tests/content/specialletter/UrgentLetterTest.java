@@ -23,6 +23,9 @@ public class UrgentLetterTest extends SpecialLetterTest<Letter<?>>{
 		return new UrgentLetter<Letter<?>>(content);
 	}
 
+	/**
+	 * Tests the content of a contained letter
+	 */
 	@Test
 	public void whatAmITesting() {
 		SimpleLetter simpleLetter = new SimpleLetter(sender, receiver);
@@ -31,6 +34,9 @@ public class UrgentLetterTest extends SpecialLetterTest<Letter<?>>{
 		Text text = letter.getContent().getContent();
 	}
 	
+	/**
+	 * Tests sending a urgent simple letter
+	 */
 	@Test
 	public void simpleLetterInUrgentLetter() throws LetterDeliveryException{
 		UrgentLetter<Letter<?>> urgentSimpleLetter = createLetter();
@@ -38,6 +44,9 @@ public class UrgentLetterTest extends SpecialLetterTest<Letter<?>>{
 		sendLetter(urgentSimpleLetter, 1, 0, 0, 1, 0);
 	}
 	
+	/**
+	 * Tests sending an urgent promissory note
+	 */
 	@Test
 	public void promissoryLetterInUrgentLetter() throws LetterDeliveryException{
 		double receiverBankAccount = receiver.getBankAccount();
@@ -49,6 +58,9 @@ public class UrgentLetterTest extends SpecialLetterTest<Letter<?>>{
 		assertEquals(receiverBankAccount + promissoryNote.getContent().getAmount() - 1 /* 1 is the cost of Thanks letter */, receiver.getBankAccount(), 0);
 	}
 
+	/**
+	 * Tests sending an urgent registered simple letter 
+	 */
 	@Test
 	public void simpleLetterInRegisteredLetterInUrgentLetter() throws LetterDeliveryException{
 		RegisteredLetter<Letter<?>> registeredLetter = new RegisteredLetter<Letter<?>>(new SimpleLetter(sender, receiver));
@@ -57,6 +69,9 @@ public class UrgentLetterTest extends SpecialLetterTest<Letter<?>>{
 		sendLetter(urgentRegisteredSimpleLetter, 1, 1, 1, 1, 0);
 	}
 	
+	/**
+	 * Tests sending an urgent registered promissory note
+	 */
 	@Test
 	public void promissoryLetterInRegisteredLeterInUrgentLetter() throws LetterDeliveryException{
 		

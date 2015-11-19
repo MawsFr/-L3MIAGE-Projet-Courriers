@@ -2,9 +2,7 @@ package content.letter;
 
 import static org.junit.Assert.assertEquals;
 import model.content.Money;
-import model.content.Text;
 import model.content.letter.PromissoryNote;
-import model.content.letter.SimpleLetter;
 
 import org.junit.Test;
 

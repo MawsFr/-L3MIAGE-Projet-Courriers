@@ -17,6 +17,9 @@ public class Text implements Content {
 	 * @param content The text content
 	 */
 	public Text(String content) {
+		if(content == null) {
+			throw new NullPointerException("You must specify a non null content argument");
+		}
 		this.content = content;
 	}
 	
